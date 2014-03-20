@@ -16,11 +16,11 @@ This repo contains a bash shell script example (Mac OSX tested) for using curl a
 7. Enter your server instance (e.g. na1)
 8. If successful, you should get the results from a query of your accounts
 
-![bash example] (https://raw.github.com/atorman/curlREST/blob/master/terminalExample.png)
+![screenshot](https://raw.githubusercontent.com/atorman/curlREST/master/terminalExample.png)
 
 ##Important Parts
 
-The script is commented, but the key aspects are described below
+The script is commented, but the key aspects are described below.
 
 Get the oauth2 response and store it (create your own [connected app](http://help.salesforce.com/apex/HTViewHelpDoc?id=connected_app_create.htm&language=en_US "Creating a Connected App help topic") to get a new client id and secret)
 
