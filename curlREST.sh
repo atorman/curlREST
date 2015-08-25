@@ -19,10 +19,11 @@ response=`curl https://${instance}.salesforce.com/services/oauth2/token -d "gran
 echo "response: {$response}"
 
 #test regular expression for an access token
-if [[ "$response" =~ (\"access_token\"):\"(.+)\" ]]; then
+pattern='"access_token":"([^"]*)"'
+if [[ $response =~ $pattern ]]; then
 	
 	#use some BASH_REMATCH magic to pull the access token substring out and store it - see http://robots.thoughtbot.com/the-unix-shells-humble-if for examples
-	access_token="${BASH_REMATCH[2]}"
+	access_token="${BASH_REMATCH[1]}"
 	
 	#uncomment to check token results
 	echo "token: ${access_token}"
