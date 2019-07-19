@@ -12,8 +12,14 @@ read -s -p "Please enter password (and press ENTER): " password
 echo
 read -p "Please enter instance (e.g. na1) for the loginURL (and press ENTER): " instance
 
+#prompt the user to enter their clientid
+read -p "Please enter Salesforce connected app client id (and press ENTER): " client_id
+
+#prompt the user to enter their clientsecret
+read -s -p "Please enter Salesforce connected app client secret (and press ENTER): " client_secret
+
 #get the oauth2 response and store it (create your own connected app to get a new client id and secret - https://na1.salesforce.com/help/pdfs/en/salesforce_identity_implementation_guide.pdf)
-response=`curl https://${instance}.salesforce.com/services/oauth2/token -d "grant_type=password" -d "client_id=3MVG99OxTyEMCQ3hSjz15qIUWtIhsQynMvhMgcxDgAxS0DRiDsDP2ZLTv_ywkjvbAdeanmHWInQ==" -d "client_secret=7383101323593261180" -d "username=${username}" -d "password=${password}"`
+response=`curl https://${instance}.salesforce.com/services/oauth2/token -d "grant_type=password" -d "client_id=${client_id}" -d "client_secret=${client_secret}" -d "username=${username}" -d "password=${password}"`
 
 #uncomment to check response json
 echo "response: {$response}"
