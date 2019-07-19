@@ -24,7 +24,7 @@ The script is commented, but the key aspects are described below.
 
 Get the oauth2 response and store it (create your own [connected app](http://help.salesforce.com/apex/HTViewHelpDoc?id=connected_app_create.htm&language=en_US "Creating a Connected App help topic") to get a new client id and secret)
 
-    response=`curl https://${instance}.salesforce.com/services/oauth2/token -d "grant_type=password" -d "client_id=3MVG99OxTyEMCQ3hSjz15qIUWtIhsQynMvhMgcxDgAxS0DRiDsDP2ZLTv_ywkjvbAdeanmHWInQ==" -d "client_secret=7383101323593261180" -d "username=${username}" -d "password=${password}"`
+    response=`curl https://${instance}.salesforce.com/services/oauth2/token -d "grant_type=password" -d "client_id=<FILL_IN_CLIENT_ID>" -d "client_secret=<FILL_IN_CLIENT_SECRET>" -d "username=${username}" -d "password=${password}"`
 
 Use some BASH_REMATCH magic to pull the access token substring out and store it. [For more examples on BASH_REMATCH and testing RegEx in bash](http://robots.thoughtbot.com/the-unix-shells-humble-if "Unix Shells Humble If")
     
