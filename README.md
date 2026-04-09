@@ -35,3 +35,5 @@ Substitute your own REST API calls for this simple Account query
 
     curl https://${instance}.salesforce.com/services/data/v29.0/query?q=Select+Id+From+Account+LIMIT+5 -H "Authorization: Bearer ${access_token}" -H "X-PrettyPrint:1" 
 
+Author: Adam Torman
+
