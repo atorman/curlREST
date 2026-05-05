@@ -25,17 +25,19 @@ response=`curl https://${instance}.salesforce.com/services/oauth2/token -d "gran
 echo "response: {$response}"
 
 #test regular expression for an access token
-pattern='"access_token":"([^"]*)"'
+pattern='"access_token":"([^"]*).*"instance_url":"([^"]*)'
 if [[ $response =~ $pattern ]]; then
 	
 	#use some BASH_REMATCH magic to pull the access token substring out and store it - see http://robots.thoughtbot.com/the-unix-shells-humble-if for examples
 	access_token="${BASH_REMATCH[1]}"
+	instanceFromRest="${BASH_REMATCH[2]}"
 	
 	#uncomment to check token results
 	echo "token: ${access_token}"
+	echo "instance is now ${instanceFromRest}"
 
 	#now run whatever REST API query, insert, delete, etc... you want
-	curl https://${instance}.salesforce.com/services/data/v29.0/query?q=Select+Id+From+Account+LIMIT+5 -H "Authorization: Bearer ${access_token}" -H "X-PrettyPrint:1" 
+	curl ${instanceFromRest}/services/data/v29.0/query?q=Select+Id+From+Account+LIMIT+5 -H "Authorization: Bearer ${access_token}" -H "X-PrettyPrint:1" 
 else
 	#whoops - what happened?
 	echo "something went terribly wrong :("
